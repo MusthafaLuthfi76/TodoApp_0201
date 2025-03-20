@@ -13,7 +13,7 @@ class _FormPageState extends State<FormPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   List<String> tasks = [];
 
-  void addData() {
+  void _addTask() {
     setState(() {
       tasks.add(nameController.text);
     });
@@ -38,8 +38,43 @@ class _FormPageState extends State<FormPage> {
                   ),
                 ],
               ),
+              Form(
+                key: _formKey,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        controller: nameController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter a task name';
+                          }
+                          return null;
+                        },
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        decoration: InputDecoration(
+                          hintText: 'Enter your first name',
+                          border: OutlineInputBorder(),
+                          label: Text("First Name")
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    ElevatedButton(
+                      onPressed: _addTask,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.purple,
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      child: Text('Submit'),
+                    ),
+                  ],
+                ),
+              ),
             ],
-            
       ),)),
     );
   }
