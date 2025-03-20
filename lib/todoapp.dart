@@ -30,17 +30,17 @@ class _FormPageState extends State<FormPage> {
 
   void _addTask() {
     setState(() {
-        tasks.add({
-          'title': nameController.text,
-          'deadline': selectedDate!,
-          'done': false,
-        });
-        nameController.clear();
-        selectedDate = null;
+      tasks.add({
+        'title': nameController.text,
+        'deadline': selectedDate!,
+        'done': false,
       });
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Task Added!')),
-      );
+      nameController.clear();
+      selectedDate = null;
+    });
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text('Task Added!')));
   }
 
   void _toggleTaskStatus(int index) {
@@ -80,7 +80,7 @@ class _FormPageState extends State<FormPage> {
                       style: TextStyle(fontSize: 16, color: Colors.black87),
                     ),
                     SizedBox(width: 250),
-                    Icon(Icons.calendar_today, color: Colors.blue, ),
+                    Icon(Icons.calendar_today, color: Colors.blue),
                   ],
                 ),
               ),
@@ -107,7 +107,7 @@ class _FormPageState extends State<FormPage> {
                         decoration: InputDecoration(
                           hintText: 'Enter your first name',
                           border: OutlineInputBorder(),
-                          label: Text("First Name")
+                          label: Text("First Name"),
                         ),
                       ),
                     ),
@@ -132,11 +132,12 @@ class _FormPageState extends State<FormPage> {
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               Expanded(
-                child: tasks.isEmpty
-                    ? Center(child: Text('No tasks added yet.'))
-                    : ListView.builder(
-                        itemCount: tasks.length,
-                        itemBuilder: (context, index) {
+                child:
+                    tasks.isEmpty
+                        ? Center(child: Text('No tasks added yet.'))
+                        : ListView.builder(
+                          itemCount: tasks.length,
+                          itemBuilder: (context, index) {
                             return Container(
                               margin: EdgeInsets.symmetric(vertical: 5),
                               padding: EdgeInsets.all(16),
@@ -145,48 +146,60 @@ class _FormPageState extends State<FormPage> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      tasks[index]['title'],
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        tasks[index]['title'],
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                      'Deadline: ' +
-                                          DateFormat('dd-MM-yyyy HH:mm')
-                                              .format(tasks[index]['deadline']),
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.blueGrey,
+                                      Text(
+                                        'Deadline: ' +
+                                            DateFormat(
+                                              'dd-MM-yyyy HH:mm',
+                                            ).format(tasks[index]['deadline']),
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          color: Colors.blueGrey,
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                      tasks[index]['done'] ? 'Done' : 'Not Done',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: tasks[index]['done']
-                                            ? Colors.green
-                                            : Colors.red,
+                                      Text(
+                                        tasks[index]['done']
+                                            ? 'Done'
+                                            : 'Not Done',
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          color:
+                                              tasks[index]['done']
+                                                  ? Colors.green
+                                                  : Colors.red,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                Checkbox(
-                                  value: tasks[index]['done'],
-                                  onChanged: (value) => _toggleTaskStatus(index),
-                                  activeColor: Colors.purple,
-                                ),
-                              ]
-                    )
-              )
+                                    ],
+                                  ),
+                                  Checkbox(
+                                    value: tasks[index]['done'],
+                                    onChanged:
+                                        (value) => _toggleTaskStatus(index),
+                                    activeColor: Colors.purple,
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
+              ),
             ],
-      ),)),
+          ),
+        ),
+      ),
     );
   }
 }
