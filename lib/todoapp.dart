@@ -11,12 +11,22 @@ class FormPage extends StatefulWidget {
 class _FormPageState extends State<FormPage> {
   final TextEditingController nameController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  List<String> tasks = [];
+  List<Map<String, dynamic>> tasks = [];
+  DateTime? selectedDate;
 
   void _addTask() {
     setState(() {
-      tasks.add(nameController.text);
-    });
+        tasks.add({
+          'title': nameController.text,
+          'deadline': selectedDate!,
+          'done': false,
+        });
+        nameController.clear();
+        selectedDate = null;
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Task Added!')),
+      );
   }
 
 
