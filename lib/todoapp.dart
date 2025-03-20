@@ -126,6 +126,11 @@ class _FormPageState extends State<FormPage> {
                   ],
                 ),
               ),
+              SizedBox(height: 20),
+              Text(
+                'List Tasks',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
             ],
       ),)),
     );
