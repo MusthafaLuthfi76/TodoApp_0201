@@ -84,6 +84,12 @@ class _FormPageState extends State<FormPage> {
                   ],
                 ),
               ),
+              if (selectedDate == null)
+                Text(
+                  'Please select a date',
+                  style: TextStyle(color: Colors.red),
+                ),
+              SizedBox(height: 20),
               Form(
                 key: _formKey,
                 child: Row(
