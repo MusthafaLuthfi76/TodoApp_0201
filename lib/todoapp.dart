@@ -175,6 +175,14 @@ class _FormPageState extends State<FormPage> {
                                             : Colors.red,
                                       ),
                                     ),
+                                  ],
+                                ),
+                                Checkbox(
+                                  value: tasks[index]['done'],
+                                  onChanged: (value) => _toggleTaskStatus(index),
+                                  activeColor: Colors.purple,
+                                ),
+                              ]
                     )
               )
             ],
