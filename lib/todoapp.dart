@@ -134,7 +134,17 @@ class _FormPageState extends State<FormPage> {
               Expanded(
                 child: tasks.isEmpty
                     ? Center(child: Text('No tasks added yet.'))
-                    : ListView.builder()
+                    : ListView.builder(
+                        itemCount: tasks.length,
+                        itemBuilder: (context, index) {
+                            return Container(
+                              margin: EdgeInsets.symmetric(vertical: 5),
+                              padding: EdgeInsets.all(16),
+                              decoration: BoxDecoration(
+                                color: Colors.grey[200],
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                    )
               )
             ],
       ),)),
