@@ -43,6 +43,11 @@ class _FormPageState extends State<FormPage> {
       );
   }
 
+  void _toggleTaskStatus(int index) {
+    setState(() {
+      tasks[index]['done'] = !tasks[index]['done'];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
