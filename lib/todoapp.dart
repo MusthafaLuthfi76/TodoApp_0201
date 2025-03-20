@@ -14,6 +14,20 @@ class _FormPageState extends State<FormPage> {
   List<Map<String, dynamic>> tasks = [];
   DateTime? selectedDate;
 
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2020),
+      lastDate: DateTime(2030),
+    );
+    if (picked != null) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
+  }
+
   void _addTask() {
     setState(() {
         tasks.add({
