@@ -166,6 +166,15 @@ class _FormPageState extends State<FormPage> {
                                         color: Colors.blueGrey,
                                       ),
                                     ),
+                                    Text(
+                                      tasks[index]['done'] ? 'Done' : 'Not Done',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: tasks[index]['done']
+                                            ? Colors.green
+                                            : Colors.red,
+                                      ),
+                                    ),
                     )
               )
             ],
