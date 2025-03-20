@@ -67,6 +67,23 @@ class _FormPageState extends State<FormPage> {
                   ),
                 ],
               ),
+              SizedBox(height: 20),
+              Text('Task Date:', style: TextStyle(fontSize: 18)),
+              GestureDetector(
+                onTap: () => _selectDate(context),
+                child: Row(
+                  children: [
+                    Text(
+                      selectedDate == null
+                          ? 'Select a date'
+                          : DateFormat('dd-MM-yyyy').format(selectedDate!),
+                      style: TextStyle(fontSize: 16, color: Colors.black87),
+                    ),
+                    SizedBox(width: 250),
+                    Icon(Icons.calendar_today, color: Colors.blue, ),
+                  ],
+                ),
+              ),
               Form(
                 key: _formKey,
                 child: Row(
