@@ -144,6 +144,28 @@ class _FormPageState extends State<FormPage> {
                                 color: Colors.grey[200],
                                 borderRadius: BorderRadius.circular(10),
                               ),
+                              child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      tasks[index]['title'],
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Deadline: ' +
+                                          DateFormat('dd-MM-yyyy HH:mm')
+                                              .format(tasks[index]['deadline']),
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.blueGrey,
+                                      ),
+                                    ),
                     )
               )
             ],
