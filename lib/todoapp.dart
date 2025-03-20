@@ -131,6 +131,11 @@ class _FormPageState extends State<FormPage> {
                 'List Tasks',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
+              Expanded(
+                child: tasks.isEmpty
+                    ? Center(child: Text('No tasks added yet.'))
+                    : ListView.builder()
+              )
             ],
       ),)),
     );
